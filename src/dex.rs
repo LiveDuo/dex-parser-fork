@@ -35,62 +35,62 @@ use std::path::Path;
 pub struct Header {
     /// Magic value that must appear at the beginning of the header section
     /// Contains dex\n<version>\0
-    magic: [ubyte; 8],
+    pub magic: [ubyte; 8],
     /// Adler32 checksum of the rest of the file (everything but magic and this field);
     /// Used to detect file corruption.
-    checksum: uint,
+    pub checksum: uint,
     /// SHA-1 signature (hash) of the rest of the file (everything but magic, checksum, and this field);
     /// Used to uniquely identify files.
-    signature: [ubyte; 20],
+    pub signature: [ubyte; 20],
     /// Size of the entire file (including the header), in bytes.
-    file_size: uint,
+    pub file_size: uint,
     /// Size of the header in bytes. Usually 0x70.
-    header_size: uint,
+    pub header_size: uint,
     /// Endianness tag
     /// A value of 0x12345678 denotes little-endian, 0x78563412 denotes byte-swapped form.
-    endian_tag: [ubyte; 4],
+    pub endian_tag: [ubyte; 4],
     /// Size of the link section, or 0 if this file isn't statically linked
-    link_size: uint,
+    pub link_size: uint,
     /// Offset from the start of the file to the link section
     /// The offset, if non-zero, should be into the link_data section.
-    link_off: uint,
+    pub link_off: uint,
     /// Offset from the start of the file to the map item.
     /// Must be non-zero and into the data section.
-    map_off: uint,
+    pub map_off: uint,
     /// Count of strings in the string identifiers list.
-    string_ids_size: uint,
+    pub string_ids_size: uint,
     /// Offset from the start of the file to the string identifiers list
     /// The offset, if non-zero, should be to the start of the string_ids section.
-    string_ids_off: uint,
+    pub string_ids_off: uint,
     /// Count of elements in the type identifiers list, at most 65535.
-    type_ids_size: uint,
+    pub type_ids_size: uint,
     /// Offset from the start of the file to the type identifiers list
     /// The offset, if non-zero, should be to the start of the type_ids section.
-    type_ids_off: uint,
+    pub type_ids_off: uint,
     /// Count of elements in the prototype identifiers list, at most 65535.
-    proto_ids_size: uint,
+    pub proto_ids_size: uint,
     /// Offset from the start of the file to the prototype identifiers list.
     /// The offset, if non-zero, should be to the start of the proto_ids section.
-    proto_ids_off: uint,
+    pub proto_ids_off: uint,
     /// Count of elements in the field identifiers list
-    field_ids_size: uint,
+    pub field_ids_size: uint,
     /// Offset from the start of the file to the field identifiers list
     /// The offset, if non-zero, should be to the start of the field_ids section
-    field_ids_off: uint,
+    pub field_ids_off: uint,
     /// Count of elements in the method identifiers list
-    method_ids_size: uint,
+    pub method_ids_size: uint,
     /// Offset from the start of the file to the method identifiers list.
     /// The offset, if non-zero, should be to the start of the method_ids section.
-    method_ids_off: uint,
+    pub method_ids_off: uint,
     /// Count of elements in the class definitions list
-    class_defs_size: uint,
+    pub class_defs_size: uint,
     /// Offset from the start of the file to the class definitions list.
     /// The offset, if non-zero, should be to the start of the class_defs section.
-    class_defs_off: uint,
+    pub class_defs_off: uint,
     /// Size of data section in bytes. Must be an even multiple of sizeof(uint).
-    data_size: uint,
+    pub data_size: uint,
     /// Offset from the start of the file to the start of the data section.
-    data_off: uint,
+    pub data_off: uint,
 }
 
 impl Header {

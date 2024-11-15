@@ -74,3 +74,42 @@ pub type Result<T> = std::result::Result<T, error::Error>;
 
 /// The endianness of bytes.
 pub type Endian = scroll::Endian;
+
+
+#[cfg(test)]
+mod tests {
+
+    #[test]
+    fn test_file() {
+        let _dex = super::DexReader::from_file("resources/compiled.dex").unwrap();
+        dbg!(_dex.inner);
+
+        // let header = _dex.header();
+        let _header = crate::Header {
+            magic: [0; 8],
+            checksum: 0,
+            signature: [0; 20],
+            file_size: 0,
+            header_size: 0,
+            endian_tag: [0; 4],
+            link_size: 0,
+            link_off: 0,
+            map_off: 0,
+            string_ids_size: 0,
+            string_ids_off: 0,
+            type_ids_size: 0,
+            type_ids_off: 0,
+            proto_ids_size: 0,
+            proto_ids_off: 0,
+            field_ids_size: 0,
+            field_ids_off: 0,
+            method_ids_size: 0,
+            method_ids_off: 0,
+            class_defs_size: 0,
+            class_defs_off: 0,
+            data_size: 0,
+            data_off: 0
+        };
+    }
+
+}
