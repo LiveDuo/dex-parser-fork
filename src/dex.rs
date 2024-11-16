@@ -655,7 +655,7 @@ where
 
     /// Returns the `AnnotationItem` at the offset.
     pub fn get_annotation_item(&self, annotation_off: uint) -> Result<AnnotationItem> {
-        debug!(target: "annotaion-item", "annotation item offset: {}", annotation_off);
+        debug!(target: "annotation-item", "annotation item offset: {}", annotation_off);
         if !self.is_offset_in_data_section(annotation_off) {
             return Err(Error::BadOffset(
                 annotation_off as usize,
