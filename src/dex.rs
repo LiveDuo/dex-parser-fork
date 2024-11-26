@@ -101,7 +101,7 @@ impl Header {
 
 /// Wrapper type for Dex
 #[derive(Debug, Getters, CopyGetters)]
-pub(crate) struct DexInner {
+pub struct DexInner {
     /// The header
     #[get = "pub"]
     header: Header,
@@ -327,10 +327,10 @@ impl<'a> ctx::TryFromCtx<'a, Endian> for MapItem {
 /// Represents a Dex file
 pub struct Dex<T> {
     /// Source from which this Dex file is loaded from.
-    pub(crate) source: Source<T>,
+    pub source: Source<T>,
     /// Items in string_ids section are cached here.
-    pub(crate) strings: Strings<T>,
-    pub(crate) inner: DexInner,
+    pub strings: Strings<T>,
+    pub inner: DexInner,
 }
 
 impl<T> Dex<T>
@@ -655,7 +655,7 @@ where
 
     /// Returns the `AnnotationItem` at the offset.
     pub fn get_annotation_item(&self, annotation_off: uint) -> Result<AnnotationItem> {
-        debug!(target: "annotaion-item", "annotation item offset: {}", annotation_off);
+        debug!(target: "annotation-item", "annotation item offset: {}", annotation_off);
         if !self.is_offset_in_data_section(annotation_off) {
             return Err(Error::BadOffset(
                 annotation_off as usize,
